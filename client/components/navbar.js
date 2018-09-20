@@ -15,9 +15,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <Menu.Item as={Link} to="/home">
             Home
           </Menu.Item>
-          <Menu.Item as={Link} to="/logout">
-            Log Out
-          </Menu.Item>
+          <Menu.Item onClick={handleClick}>Log Out</Menu.Item>
         </Container>
       ) : (
         <Container>

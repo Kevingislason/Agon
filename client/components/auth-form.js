@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
-import {Container, Form, Button, Divider} from 'semantic-ui-react'
+import {Container, Form, Button} from 'semantic-ui-react'
 
 /**
  * COMPONENT
@@ -16,13 +16,13 @@ const AuthForm = props => {
         <Container fluid>
           <Form.Field>
             <label>Email</label>
-            <input placeholder="Email" />
+            <input name="email" type="text" placeholder="Email" />
           </Form.Field>
         </Container>
         <Container fluid>
           <Form.Field>
             <label>Password</label>
-            <input placeholder="Password" />
+            <input name="password" type="text" placeholder="Password" />
           </Form.Field>
         </Container>
         <Container>

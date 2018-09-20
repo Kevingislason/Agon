@@ -1,18 +1,51 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Submission} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
   const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
+    User.create({email: 'agonuser@invalid.com', password: 'password'}),
+    User.create({email: 'anotheragonuser@invalid.com', password: 'password'}),
+    User.create({email: 'apollo@invalid.com', password: 'password'}),
+    User.create({email: 'dionysus@invalid.com', password: 'password'}),
+    User.create({email: 'kevingislason@gmail.com', password: 'password'}),
+    User.create({email: 'kgislason@uchicago.edu', password: 'password'})
+  ])
+
+  const submissions = await Promise.all([
+    Submission.create({
+      content:
+        'This is writing of extremely high quality This is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high quality',
+      userId: 1
+    }),
+    Submission.create({
+      content:
+        'This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality',
+      userId: 2
+    }),
+    Submission.create({
+      content:
+        'This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality',
+      userId: 3
+    }),
+    Submission.create({
+      content:
+        "This is writing of low quality This is writing of low quality  This is writing of low quality  This is writing of low quality  This is writing of low quality  This is writing of low quality  This is writing of low quality  This is writing of low quality  This is writing of low quality  This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality ***And it's needlessly long too****",
+      userId: 4
+    }),
+    Submission.create({
+      content:
+        'This is writing of unimaginably dreadful quality, This is writing of unimaginably dreadful quality, This is writing of unimaginably dreadful quality, This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality',
+      userId: 5
+    })
   ])
 
   console.log(`seeded ${users.length} users`)
+  console.log(`seeded ${submissions.length} submissions`)
   console.log(`seeded successfully`)
 }
 
