@@ -32,6 +32,12 @@ const Navbar = ({handleClick, isLoggedIn}) => (
               <Header.Subheader>ἀνανέμω</Header.Subheader>
             </Header>
           </Menu.Item>
+          <Menu.Item as={Link} to="/submit">
+            <Header as="h5">
+              Submit
+              <Header.Subheader>ἐπιτολμάω</Header.Subheader>
+            </Header>
+          </Menu.Item>
         </Container>
       ) : (
         <Container fluid>

@@ -18,17 +18,19 @@ const Submission = db.define('submission', {
     type: Sequelize.INTEGER,
     defaultValue: 0
   },
-  isActive: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: true
+  status: {
+    type: Sequelize.ENUM(
+      'pending',
+      'active',
+      'defeated',
+      'expired',
+      'featured'
+    ),
+    defaultValue: 'pending'
   },
   numberOfRatings: {
     type: Sequelize.INTEGER,
     defaultValue: 0
-  },
-  featured: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false
   }
 })
 

@@ -16,11 +16,10 @@ nav a {
   margin: 1em;
 }
 
-form div {
+/* form div {
   margin: 1em;
-  display: inline-block;
-  width: 20%;
-}
+  width: 30%;
+} */
 
 #main-header {
   top: 25%;

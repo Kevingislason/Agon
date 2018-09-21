@@ -23,7 +23,7 @@ Rating.hook('afterUpdate', async (rating, options) => {
   const submission = await Submission.findById(submissionId)
   submission.increment('score', {by: rating.score})
   if (submission.score <= -5) {
-    submission.update({isActive: false})
+    submission.update({status: 'defeated'})
   }
 })
 
