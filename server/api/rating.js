@@ -1,6 +1,8 @@
 const router = require('express').Router()
 const {Rating} = require('../db/models')
 const UserMW = require('./middleware')
+const Op = require('sequelize').Op
+var moment = require('moment')
 module.exports = router
 
 //Posts a pending rating with a score of null
@@ -22,12 +24,38 @@ router.put('/', async (req, res, next) => {
     const submissionId = req.body.submissionId
     const reviewerId = req.body.reviewerId
     const rating = await Rating.findOne({where: {reviewerId, submissionId}})
-    console.log(rating)
     if (rating.score !== null) {
       rating.increment('score', {by: score})
     } else {
       rating.update({score})
     }
+    res.sendStatus(200)
+  } catch (err) {
+    next(err)
+  }
+})
+
+//Deletes all old incomplete ratings
+//truncate????
+router.delete('/', async (req, res, next) => {
+  try {
+    const date = moment('MM-DD-YYYY')
+    await Rating.destroy({
+      where: {
+        [Op.and]: [
+          {
+            score: {
+              [Op.is]: null
+            }
+          },
+          {
+            createdAt: {
+              [Op.lt]: date.toDate()
+            }
+          }
+        ]
+      }
+    })
     res.sendStatus(200)
   } catch (err) {
     next(err)

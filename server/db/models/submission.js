@@ -10,6 +10,10 @@ const Submission = db.define('submission', {
       notEmpty: true
     }
   },
+  title: {
+    type: Sequelize.STRING,
+    defaultValue: 'Unititled'
+  },
   score: {
     type: Sequelize.INTEGER,
     defaultValue: 0
@@ -18,20 +22,14 @@ const Submission = db.define('submission', {
     type: Sequelize.BOOLEAN,
     defaultValue: true
   },
-  numberOfCompletedRatings: {
+  numberOfRatings: {
     type: Sequelize.INTEGER,
     defaultValue: 0
   },
-  numberOfPendingRatings: {
-    type: Sequelize.INTEGER,
-    defaultValue: 0
+  featured: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
-
-// Submission.hook('beforeSave', (submission, options) => {
-//   if (submission.score >= -5) {
-//     this.isActive = false
-//   }
-// })
 
 module.exports = Submission

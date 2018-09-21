@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {Container, Header} from 'semantic-ui-react'
-
+import {Container, Header, Divider} from 'semantic-ui-react'
 /**
  * COMPONENT
  */
@@ -11,7 +10,10 @@ export const UserHome = props => {
 
   return (
     <Container>
-      <Header as="h3">Welcome, {email}</Header>
+      <Divider hidden />
+      <Container textAlign="center">
+        <Header as="h3">Welcome, {email}</Header>
+      </Container>
     </Container>
   )
 }

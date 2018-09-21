@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Submission} = require('../server/db/models')
+const {User, Submission, Rating} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -44,8 +44,17 @@ async function seed() {
     })
   ])
 
+  const ratings = await Promise.all([
+    Rating.create({score: null, reviewerId: 6, submissionId: 1}),
+    Rating.create({score: null, reviewerId: 6, submissionId: 2}),
+    Rating.create({score: null, reviewerId: 6, submissionId: 3}),
+    Rating.create({score: null, reviewerId: 6, submissionId: 4}),
+    Rating.create({score: null, reviewerId: 6, submissionId: 5})
+  ])
+
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${submissions.length} submissions`)
+  console.log(`seeded ${ratings.length} rtings`)
   console.log(`seeded successfully`)
 }
 

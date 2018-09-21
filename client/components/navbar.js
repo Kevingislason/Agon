@@ -3,28 +3,56 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
-import {Menu, Container, Header} from 'semantic-ui-react'
+import {Menu, Container, Header, Divider, Segment} from 'semantic-ui-react'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <Container>
-    <Header as="h1">Agon</Header>
-    <Menu>
+  <Container fluid>
+    <Header as="h2" size="huge" id="main-header">
+      Agon<Header.Subheader id="subheader">ἀγών</Header.Subheader>
+    </Header>
+    <Menu id="menu">
       {isLoggedIn ? (
-        <Container>
+        <Container fluid>
           {/* The navbar will show these links after you log in */}
           <Menu.Item as={Link} to="/home">
-            Home
+            <Header as="h5">
+              Home
+              <Header.Subheader>οἶκος</Header.Subheader>
+            </Header>
           </Menu.Item>
-          <Menu.Item onClick={handleClick}>Log Out</Menu.Item>
+          <Menu.Item onClick={handleClick}>
+            <Header as="h5">
+              Log Out
+              <Header.Subheader>ἄφοδος </Header.Subheader>
+            </Header>
+          </Menu.Item>
+          <Menu.Item as={Link} to="/read">
+            <Header as="h5">
+              Read
+              <Header.Subheader>ἀνανέμω</Header.Subheader>
+            </Header>
+          </Menu.Item>
         </Container>
       ) : (
-        <Container>
+        <Container fluid>
           {/* The navbar will show these links before you log in */}
           <Menu.Item as={Link} to="/login">
-            Login
+            <Header as="h5">
+              Log In
+              <Header.Subheader>εἴσειμι </Header.Subheader>
+            </Header>
           </Menu.Item>
           <Menu.Item as={Link} to="/signup">
-            Sign up
+            <Header as="h5">
+              Sign Up
+              <Header.Subheader>συμβολή </Header.Subheader>
+            </Header>
+          </Menu.Item>
+          <Menu.Item as={Link} to="/read">
+            <Header as="h5">
+              Read
+              <Header.Subheader>ἀνανέμω</Header.Subheader>
+            </Header>
           </Menu.Item>
         </Container>
       )}
