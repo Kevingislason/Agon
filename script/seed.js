@@ -20,27 +20,32 @@ async function seed() {
     Submission.create({
       content:
         'This is writing of extremely high quality This is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high qualityThis is writing of extremely high quality',
-      userId: 1
+      userId: 1,
+      status: 'active'
     }),
     Submission.create({
       content:
         'This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality This is writing of fairly high quality',
-      userId: 2
+      userId: 2,
+      status: 'active'
     }),
     Submission.create({
       content:
         'This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality This is writing of average quality',
-      userId: 3
+      userId: 3,
+      status: 'active'
     }),
     Submission.create({
       content:
         "This is writing of low quality This is writing of low quality  This is writing of low quality  This is writing of low quality  This is writing of low quality  This is writing of low quality  This is writing of low quality  This is writing of low quality  This is writing of low quality  This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality This is writing of low quality ***And it's needlessly long too****",
-      userId: 4
+      userId: 4,
+      status: 'active'
     }),
     Submission.create({
       content:
         'This is writing of unimaginably dreadful quality, This is writing of unimaginably dreadful quality, This is writing of unimaginably dreadful quality, This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality This is writing of unimaginably dreadful quality',
-      userId: 5
+      userId: 5,
+      status: 'active'
     })
   ])
 

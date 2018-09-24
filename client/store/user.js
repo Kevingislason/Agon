@@ -1,5 +1,8 @@
 import axios from 'axios'
 import history from '../history'
+import {clearRatings} from './rating'
+import {clearSubmissions} from './submission'
+import store from './index'
 
 /**
  * ACTION TYPES
@@ -50,6 +53,8 @@ export const logout = () => async dispatch => {
   try {
     await axios.post('/auth/logout')
     dispatch(removeUser())
+    store.dispatch(clearSubmissions())
+    store.dispatch(clearRatings())
     history.push('/login')
   } catch (err) {
     console.error(err)

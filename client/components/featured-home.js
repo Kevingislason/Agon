@@ -55,8 +55,8 @@ class FeaturedHome extends Component {
         ) : (
           <Container fluid>
             <Divider hidden />
-            <Header textAlign="center" as="h1">
-              Coming soon
+            <Header className="lonely-header" textAlign="center" as="h3">
+              Coming soon...
             </Header>
           </Container>
         )}

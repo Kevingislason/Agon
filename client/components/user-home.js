@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Container, Header, Divider, Accordion, Icon} from 'semantic-ui-react'
-import {fetchUserSubmission} from '../store'
+import {fetchUserSubmission, fetchFeaturedSubmissions} from '../store'
 import {Link} from 'react-router-dom'
 /**
  * COMPONENT
@@ -17,6 +17,7 @@ class UserHome extends Component {
 
   componentDidMount() {
     this.props.fetchUserSubmission()
+    this.props.fetchFeaturedSubmissions()
   }
 
   handleClick = (e, titleProps) => {
@@ -27,15 +28,16 @@ class UserHome extends Component {
   }
 
   render() {
-    const email = this.props.email
+    const user = this.props.user
     const userSubmission = this.props.userSubmission
-    console.log(this.props)
+    const userFeaturedSubmission = this.props.featuredSubmissions.find(
+      submission => submission.userId === user.id
+    )
     return (
       <Container>
-        <Divider hidden />
         <Container text>
-          <Header as="h3" textAlign="center">
-            User: {email}
+          <Header className="semi-lonely-header" as="h3" textAlign="center">
+            User: {user.email}
           </Header>
           <Divider />
           {Object.keys(userSubmission).length > 0 ? (
@@ -64,6 +66,7 @@ class UserHome extends Component {
             </Container>
           )}
           <Divider />
+          {userFeaturedSubmission && <p>congrats m8</p>}
         </Container>
       </Container>
     )
@@ -75,14 +78,16 @@ class UserHome extends Component {
  */
 const mapStateToProps = state => {
   return {
-    email: state.user.email,
-    userSubmission: state.submission.userSubmission
+    user: state.user,
+    userSubmission: state.submission.userSubmission,
+    featuredSubmissions: state.submission.featuredSubmissions
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchUserSubmission: () => dispatch(fetchUserSubmission())
+    fetchUserSubmission: () => dispatch(fetchUserSubmission()),
+    fetchFeaturedSubmissions: () => dispatch(fetchFeaturedSubmissions())
   }
 }
 
@@ -91,6 +96,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(UserHome)
 /**
  * PROP TYPES
  */
-UserHome.propTypes = {
-  email: PropTypes.string
-}
+// UserHome.propTypes = {
+//   email: PropTypes.string
+// }

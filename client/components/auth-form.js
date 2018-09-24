@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
-import {Container, Form, Button} from 'semantic-ui-react'
+import {Container, Form, Button, Divider, Header} from 'semantic-ui-react'
 
 /**
  * COMPONENT
@@ -12,6 +12,11 @@ const AuthForm = props => {
 
   return (
     <Container>
+      <Divider hidden />
+      <Header textAlign="center" as="h2">
+        {displayName}
+      </Header>
+      <Divider hidden />
       <Form onSubmit={handleSubmit} name={name}>
         <Container fluid>
           <Form.Field>
@@ -19,6 +24,7 @@ const AuthForm = props => {
             <input name="email" type="text" placeholder="Email" />
           </Form.Field>
         </Container>
+        <Divider hidden />
         <Container fluid>
           <Form.Field>
             <label>Password</label>
@@ -26,6 +32,7 @@ const AuthForm = props => {
           </Form.Field>
         </Container>
         <Container>
+          <Divider hidden />
           <Button type="submit">{displayName}</Button>
         </Container>
         {error &&

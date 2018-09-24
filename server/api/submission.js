@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Submission} = require('../db/models')
+const {Submission, Rating} = require('../db/models')
 const Op = require('sequelize').Op
 module.exports = router
 
@@ -22,13 +22,31 @@ router.get('/mine', async (req, res, next) => {
 
 //Gets 5 submissions with the lowest number of ratings,
 //Excluding inactive submissions and the users own submissions
-router.get('/others', async (req, res, next) => {
+router.get('/ready-for-review', async (req, res, next) => {
   try {
     const userId = req.user.id
     const submissions = await Submission.findAll({
       limit: 5,
       order: ['numberOfRatings'],
       where: {userId: {[Op.not]: userId}, status: {[Op.eq]: 'active'}}
+    })
+    res.json(submissions)
+  } catch (err) {
+    next(err)
+  }
+})
+
+//(I think this route may be insecure; any user can see any submissions)!!!!!
+//(I could probably write this route with only I query if I used 'include')
+//Given an array of reviews, returns the corresponsing submissions
+router.get('/assigned-for-review', async (req, res, next) => {
+  try {
+    const ratings = await Rating.findAll({
+      where: {reviewerId: req.user.id, score: null}
+    })
+    const submissionsIds = ratings.map(rating => rating.submissionId)
+    const submissions = await Submission.findAll({
+      where: {id: {[Op.in]: submissionsIds}}
     })
     res.json(submissions)
   } catch (err) {
@@ -68,6 +86,20 @@ router.post('/', async (req, res, next) => {
       const newSubmission = await Submission.create(req.body)
       res.json(newSubmission)
     }
+  } catch (err) {
+    next(err)
+  }
+})
+
+//activates a pending submission
+
+router.put('/', async (req, res, next) => {
+  try {
+    console.log(req.body)
+    const submissionId = req.body.id
+    const submission = await Submission.findById(submissionId)
+    submission.update({status: 'active'})
+    res.json(submission)
   } catch (err) {
     next(err)
   }

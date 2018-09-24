@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Container, Divider, Header, Form, Button} from 'semantic-ui-react'
 import {fetchUserSubmission, postUserSubmission} from '../store'
 
-class Submit extends Component {
+class SubmitPage extends Component {
   constructor() {
     super()
     this.state = {title: '', content: ''}
@@ -19,10 +19,13 @@ class Submit extends Component {
   handleChangeContent = event => {
     this.setState({content: event.target.value})
   }
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault()
-    console.log({...this.state, userId: this.props.user.id})
-    this.props.postUserSubmission({...this.state, userId: this.props.user.id})
+
+    await this.props.postUserSubmission({
+      ...this.state,
+      userId: this.props.user.id
+    })
   }
 
   render() {
@@ -34,9 +37,8 @@ class Submit extends Component {
       return (
         <Container>
           <Divider hidden />
-          <Header textAlign="center" as="h4">
-            Thanks for your submission! Submit again during the next reading
-            period.
+          <Header className="lonely-header" textAlign="center" as="h4">
+            Thanks for playing. Submit again during the next reading period.
           </Header>
         </Container>
       )
@@ -44,8 +46,9 @@ class Submit extends Component {
       return (
         <Container>
           <Divider hidden />
-          <Header textAlign="center" as="h4">
-            Review time
+          <Header className="lonely-header" textAlign="center" as="h4">
+            Your submission is pending. It will become active once you have
+            reviewed your peers.
           </Header>
         </Container>
       )
@@ -91,4 +94,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Submit)
+export default connect(mapStateToProps, mapDispatchToProps)(SubmitPage)

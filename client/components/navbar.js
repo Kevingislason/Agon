@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 import {logout} from '../store'
-import {Menu, Container, Header, Divider, Segment} from 'semantic-ui-react'
+import {Menu, Container, Header} from 'semantic-ui-react'
+import OneMenuItem from './menu-item'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <Container fluid>
@@ -14,52 +14,23 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       {isLoggedIn ? (
         <Container fluid>
           {/* The navbar will show these links after you log in */}
-          <Menu.Item as={Link} to="/home">
-            <Header as="h5">
-              Home
-              <Header.Subheader>οἶκος</Header.Subheader>
-            </Header>
-          </Menu.Item>
           <Menu.Item onClick={handleClick}>
             <Header as="h5">
               Log Out
               <Header.Subheader>ἄφοδος </Header.Subheader>
             </Header>
           </Menu.Item>
-          <Menu.Item as={Link} to="/read">
-            <Header as="h5">
-              Read
-              <Header.Subheader>ἀνανέμω</Header.Subheader>
-            </Header>
-          </Menu.Item>
-          <Menu.Item as={Link} to="/submit">
-            <Header as="h5">
-              Submit
-              <Header.Subheader>ἐπιτολμάω</Header.Subheader>
-            </Header>
-          </Menu.Item>
+          <OneMenuItem url="/home" name="Home" greek="οἶκος" />
+          <OneMenuItem url="/read" name="Read" greek="ἀνανέμω" />
+          <OneMenuItem url="/submit" name="Submit" greek="ἐπιτολμάω" />
+          <OneMenuItem url="/review" name="Review" greek="δικάζω" />
         </Container>
       ) : (
         <Container fluid>
           {/* The navbar will show these links before you log in */}
-          <Menu.Item as={Link} to="/login">
-            <Header as="h5">
-              Log In
-              <Header.Subheader>εἴσειμι </Header.Subheader>
-            </Header>
-          </Menu.Item>
-          <Menu.Item as={Link} to="/signup">
-            <Header as="h5">
-              Sign Up
-              <Header.Subheader>συμβολή </Header.Subheader>
-            </Header>
-          </Menu.Item>
-          <Menu.Item as={Link} to="/read">
-            <Header as="h5">
-              Read
-              <Header.Subheader>ἀνανέμω</Header.Subheader>
-            </Header>
-          </Menu.Item>
+          <OneMenuItem url="/login" name="Log In" greek="εἴσειμι" />
+          <OneMenuItem url="/signup" name="Sign Up" greek="συμβολή" />
+          <OneMenuItem url="/read" name="Read" greek="ἀνανέμω" />
         </Container>
       )}
     </Menu>

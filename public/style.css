@@ -1,5 +1,5 @@
 body {
-  font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS',
+  font-family: 'Calibri', 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS',
     sans-serif;
 }
 
@@ -24,7 +24,7 @@ nav a {
 #main-header {
   top: 25%;
   width: 100%;
-  padding-left: 3rem;
+  padding-left: 4rem;
   padding-top: 1rem;
 }
 
@@ -40,4 +40,30 @@ nav a {
   position: fixed !important;
   left: 0 !important;
   bottom: 0 !important;
+}
+
+.lonely-header {
+  padding-top: 12rem !important;
+}
+
+.semi-lonely-header {
+  padding-top: 4rem !important;
+}
+
+.radio {
+  margin-top: 0.5rem;
+  margin-left: 2.1rem;
+  margin-right: 2.1rem;
+}
+
+.spaced {
+  margin-right: 5rem;
+}
+
+.button-header {
+  text-decoration: underline;
+}
+
+.gray {
+  color: gray;
 }
