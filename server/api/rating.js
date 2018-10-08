@@ -1,8 +1,8 @@
 const router = require('express').Router()
 const {Rating} = require('../db/models')
-const UserMW = require('./middleware')
-const Op = require('sequelize').Op
-var moment = require('moment')
+// const UserMW = require('./middleware')
+// const Op = require('sequelize').Op
+// var moment = require('moment')
 module.exports = router
 
 //Initializes pending ratings with score of null

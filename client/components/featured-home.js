@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Container, Header, Divider, Pagination, Icon} from 'semantic-ui-react'
+import {Container, Header, Divider, Pagination, Image} from 'semantic-ui-react'
 import {fetchFeaturedSubmissions} from '../store/submission'
 // import {Link} from 'react-router-dom'
 
@@ -37,6 +37,12 @@ class FeaturedHome extends Component {
         {featuredSubmissions.length ? (
           <Container text>
             <Divider hidden />
+            <Image
+              className="space-top"
+              centered={true}
+              src="/laurel.png"
+              size="tiny"
+            />
             <Header textAlign="center" as="h1">
               {visibleSubmission.title}
             </Header>

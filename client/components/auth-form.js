@@ -28,7 +28,7 @@ const AuthForm = props => {
         <Container fluid>
           <Form.Field>
             <label>Password</label>
-            <input name="password" type="text" placeholder="Password" />
+            <input name="password" type="password" placeholder="Password" />
           </Form.Field>
         </Container>
         <Container>

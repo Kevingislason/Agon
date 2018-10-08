@@ -67,3 +67,12 @@ nav a {
 .gray {
   color: gray;
 }
+
+.space-bottom {
+  margin-top: 3rem !important;
+  margin-bottom: 4rem !important;
+}
+
+.space-top {
+  margin-top: 2.5rem !important;
+}

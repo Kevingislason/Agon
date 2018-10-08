@@ -55,7 +55,7 @@ class ReviewForm extends Component {
     const handleChange5 = (e, {score}) => this.setState({score5: score})
     const submissionsToReview = this.props.submissionsToReview
     return (
-      <Container textAlign="center">
+      <Container text textAlign="center">
         {submissionsToReview.length && (
           <Accordion>
             <Accordion.Title
@@ -68,7 +68,10 @@ class ReviewForm extends Component {
                 Review Form
               </Header>
             </Accordion.Title>
-            <Accordion.Content active={this.state.accordionIndex === 0}>
+            <Accordion.Content
+              className="space-top"
+              active={this.state.accordionIndex === 0}
+            >
               <Form onSubmit={this.handleSubmit}>
                 <Container>
                   <ReviewField
@@ -100,7 +103,9 @@ class ReviewForm extends Component {
                     handleChange={handleChange5}
                     score={this.state.score5}
                   />
-                  <Button type="submmit">Submit</Button>
+                  <Button className="space-bottom" type="submmit">
+                    Submit
+                  </Button>
                   <Divider hidden />
                 </Container>
               </Form>
