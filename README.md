@@ -15,6 +15,5 @@ Agon is a selective online publishing platform. Editorial responsibilities are d
 
 -Implement actual publishing cycles. We could publish periodically, or when ste reaches a certain number of submissions; advantages & disadvantages to be weighed..
 
-
-
+-The algorithm may or may not cull submissions more quickly than they are received; need to do a stress test with more sophisticated seed data
 
