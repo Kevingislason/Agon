@@ -1,6 +1,6 @@
 ## Demo Link
 
-https://dashboard.heroku.com/apps/agon-press
+https://agon-press.herokuapp.com/
 
 ## About
 
